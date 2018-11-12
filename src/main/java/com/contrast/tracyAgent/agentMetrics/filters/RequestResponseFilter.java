@@ -43,7 +43,7 @@ public class RequestResponseFilter implements Filter {
         UUID newRequestId = UUID.randomUUID();
 
         log.info("Logging request {}: {} at {}", newRequestId, req.getMethod(), req.getRequestURI());
-        long requestTime = System.nanoTime();
+        long requestTime = System.currentTimeMillis();
 
         // In case content-length is not set (for example - chunked encoding),
         // this will cache body content until the copyBodyToResponse method is called to set content-length.
@@ -51,7 +51,7 @@ public class RequestResponseFilter implements Filter {
 
         chain.doFilter(req, responseWrapper);
 
-        long responseTime = System.nanoTime();
+        long responseTime = System.currentTimeMillis();
         responseWrapper.copyBodyToResponse();
 
         if(responseWrapper.getHeader("Content-Length") == null) {
@@ -61,12 +61,9 @@ public class RequestResponseFilter implements Filter {
         Metric newMetric = new Metric(newRequestId, responseTime - requestTime, Long.parseLong(responseWrapper.getHeader("Content-Length")));
 
         log.info("Logging response body size: {} bytes", newMetric.getResponseSize());
-        log.info("Logging execution time: {} nanoseconds", newMetric.getRequestTime());
+        log.info("Logging execution time: {} milliseconds", newMetric.getRequestTime());
 
         metricDao.addMetric(newMetric);
-
-        ConcurrentHashMap<UUID, Metric> metricMemoryMap = metricDao.getMetricsMap();
-
         log.info("End of filter");
     }
 
