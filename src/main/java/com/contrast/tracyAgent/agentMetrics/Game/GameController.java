@@ -13,12 +13,12 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @RequestMapping("/games")
+    @RequestMapping("/api/games")
     public List<Game> getAllGames() {
         return gameService.getAllGames();
     }
 
-    @RequestMapping("/games/{id}")
+    @RequestMapping("/api/games/{id}")
     public Game getGame(@PathVariable String id) {
         return gameService.getGame(id);
     }

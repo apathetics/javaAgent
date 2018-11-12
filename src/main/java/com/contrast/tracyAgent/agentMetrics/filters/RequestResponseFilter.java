@@ -1,7 +1,7 @@
 package com.contrast.tracyAgent.agentMetrics.filters;
 
-import com.contrast.tracyAgent.agentMetrics.Metric;
-import com.contrast.tracyAgent.agentMetrics.MetricDao;
+import com.contrast.tracyAgent.agentMetrics.Metric.Metric;
+import com.contrast.tracyAgent.agentMetrics.Metric.MetricDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 @Order(1)
@@ -64,7 +63,6 @@ public class RequestResponseFilter implements Filter {
         log.info("Logging execution time: {} milliseconds", newMetric.getRequestTime());
 
         metricDao.addMetric(newMetric);
-        log.info("End of filter");
     }
 
     @Override

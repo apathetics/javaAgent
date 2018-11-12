@@ -1,4 +1,4 @@
-package com.contrast.tracyAgent.agentMetrics;
+package com.contrast.tracyAgent.agentMetrics.Metric;
 
 import java.util.UUID;
 
