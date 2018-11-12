@@ -10,7 +10,7 @@ public class FilterConfig {
     public FilterRegistrationBean<RequestResponseFilter> loggingFilter() {
         FilterRegistrationBean<RequestResponseFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new RequestResponseFilter());
-        registrationBean.addUrlPatterns("/*");
+        registrationBean.addUrlPatterns("/games/*");
         return registrationBean;
     }
 }

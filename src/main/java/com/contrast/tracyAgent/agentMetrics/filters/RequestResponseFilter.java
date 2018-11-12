@@ -1,7 +1,10 @@
 package com.contrast.tracyAgent.agentMetrics.filters;
 
+import com.contrast.tracyAgent.agentMetrics.Metric;
+import com.contrast.tracyAgent.agentMetrics.MetricDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -15,12 +18,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 @Order(1)
 public class RequestResponseFilter implements Filter {
 
     private final static Logger log = LoggerFactory.getLogger(RequestResponseFilter.class);
+
+    @Autowired
+    private MetricDao metricDao;
 
     @Override
     public void init(final FilterConfig filterConfig) throws ServletException {
@@ -32,7 +40,9 @@ public class RequestResponseFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
 
-        log.info("Logging request: {} at {}", req.getMethod(), req.getRequestURI());
+        UUID newRequestId = UUID.randomUUID();
+
+        log.info("Logging request {}: {} at {}", newRequestId, req.getMethod(), req.getRequestURI());
         long requestTime = System.nanoTime();
 
         // In case content-length is not set (for example - chunked encoding),
@@ -44,9 +54,20 @@ public class RequestResponseFilter implements Filter {
         long responseTime = System.nanoTime();
         responseWrapper.copyBodyToResponse();
 
+        if(responseWrapper.getHeader("Content-Length") == null) {
+            return;
+        }
 
-        log.info("Logging response body size: {} bytes", responseWrapper.getHeader("Content-Length"));
-        log.info("Execution time: {} nanoseconds", responseTime - requestTime);
+        Metric newMetric = new Metric(newRequestId, responseTime - requestTime, Long.parseLong(responseWrapper.getHeader("Content-Length")));
+
+        log.info("Logging response body size: {} bytes", newMetric.getResponseSize());
+        log.info("Logging execution time: {} nanoseconds", newMetric.getRequestTime());
+
+        metricDao.addMetric(newMetric);
+
+        ConcurrentHashMap<UUID, Metric> metricMemoryMap = metricDao.getMetricsMap();
+
+        log.info("End of filter");
     }
 
     @Override
