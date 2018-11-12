@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 <head>
 
     <!-- Access the bootstrap Css like this,
         Spring boot will handle the resource mapping automatically -->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
     <!--
 	<spring:url value="/css/main.css" var="springCss" />
@@ -41,11 +42,26 @@
             ID: <input type="text" name="uuid">
             <input type="button" onclick ="metricGet()" value="Submit">
         </form>
+
+        <div style="padding-top: 15px">
+        <table>
+            <tr>
+                <th>ID (UUID)</th>
+                <th>Request Time (ms)</th>
+                <th>Response Size (bytes)</th>
+            </tr>
+            <tr>
+                <th>${metrics.id}</th>
+                <th><fmt:formatNumber value="${metrics.requestTime}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${metrics.responseSize}" maxFractionDigits="0"/></th>
+            </tr>
+        </table>
+        </div>
     </div>
 </div>
 
-<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../../webjars/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
     var metricGet = function() {
