@@ -1,6 +1,5 @@
 package com.contrast.tracyAgent.agentMetrics.Metric;
 
-import com.contrast.tracyAgent.agentMetrics.Metric.Metric;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;

@@ -24,9 +24,9 @@ public class MainController {
         return "Home";
     }
 
-    @RequestMapping("/games")
-    public String Games(Map<String, Object> model) {
+    @RequestMapping("/search")
+    public String Search(Map<String, Object> model) {
         model.put("metrics", metricDao);
-        return "Games";
+        return "Search";
     }
 }

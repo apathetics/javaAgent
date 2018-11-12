@@ -26,7 +26,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="#">Games</a></li>
+                <li class="active"><a href="#">Search</a></li>
             </ul>
         </div>
     </div>
@@ -34,9 +34,13 @@
 
 <div class="container">
     <div class="starter-template">
-        <h1>Games</h1>
-        <button type="button" onclick="gamesGet()">GET</button>
+        <h1>Search</h1>
 
+        <p>Please enter a response/request unique ID to view its metrics.</p>
+        <form id="searchForm">
+            ID: <input type="text" name="uuid">
+            <input type="button" onclick ="metricGet()" value="Submit">
+        </form>
     </div>
 </div>
 
@@ -44,20 +48,9 @@
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
-    var gamesGet = function() {
-        $.ajax({
-            type: 'GET',
-            url: '/api/games',
-            dataType: 'json',
-            async: true,
-            success: function(result) {
-                alert('SUCCESS');
-                console.log(result);
-            },
-            error: function(jq, textStatus, errorThrown) {
-                alert('FAILURE');
-            }
-        });
+    var metricGet = function() {
+        var test = document.getElementById("searchForm").elements[0].value;
+        console.log(test);
     }
 </script>
 

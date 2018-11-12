@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
 
+    //If we want to match URL patterns, then we must annotate this with @Bean and remove the @Component on the filter.
     public FilterRegistrationBean<RequestResponseFilter> loggingFilter() {
         FilterRegistrationBean<RequestResponseFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new RequestResponseFilter());

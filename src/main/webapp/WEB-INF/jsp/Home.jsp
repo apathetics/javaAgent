@@ -27,7 +27,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="/games">Games</a></li>
+                <li><a href="/search">Search</a></li>
             </ul>
         </div>
     </div>

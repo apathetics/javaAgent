@@ -67,6 +67,6 @@ public class RequestResponseFilter implements Filter {
 
     @Override
     public void destroy() {
-        log.info("Destroying filter.");
+        log.info("Clearing response filter");
     }
 }
