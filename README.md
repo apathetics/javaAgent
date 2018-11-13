@@ -23,6 +23,11 @@ So, I decided to base my project around creating my own custom filter class that
 from my own test web application. Any user interested in using the filter should be able to simply pluck the 
 RequestResponseFilter class, the sample Metric model, the in-memory "DAO", and the sample FilterConfig to quickly import
 and extend into their own Spring project.
+
+The extension currently collects the minimum, maximum, and average of:
+1. Request Time (milliseconds)
+2. Response Size (bytes)
+3. A unique ID for each request (UUID)
 <br>
 
 ## How To Use
@@ -47,6 +52,8 @@ $ mvn spring-boot:run
 
 If you are starting from an IDE, then you can run the AgentsMetricsApplication from the IDE instead.
 <br>
+
+Please note that port 8080 must be open and no other services should be running on it.
 
 ## Examples of Usage
 The home screen where collected metrics are displayed in a table.
