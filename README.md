@@ -5,6 +5,7 @@ that collects and logs HTTP request/response metadata such as request time and r
 This includes a custom Spring Filter, Filter configuration, a Metric model, and a Metric "dao" that uses an in-memory
 ConcurrentHashMap in order to calculate collected metrics to display minimum/maximum/average of request time (ms) and 
 response size (bytes).
+<br>
 
 ## Purpose (Why I built it)
 With the goal of creating a metric-gathering "extension" for a Java web application in mind, I set out to do some research
@@ -22,6 +23,7 @@ So, I decided to base my project around creating my own custom filter class that
 from my own test web application. Any user interested in using the filter should be able to simply pluck the 
 RequestResponseFilter class, the sample Metric model, the in-memory "DAO", and the sample FilterConfig to quickly import
 and extend into their own Spring project.
+<br>
 
 ## How To Use
 To clone and run this application, you will need [Git](https://git-scm.com) and [Maven](https://maven.apache.org)
@@ -44,6 +46,7 @@ $ mvn spring-boot:run
 ```
 
 If you are starting from an IDE, then you can run the AgentsMetricsApplication from the IDE instead.
+<br>
 
 ## Examples of Usage
 The home screen where collected metrics are displayed in a table.
@@ -58,6 +61,7 @@ For the search page, simply look in your logs for the unique id generated for th
 <br>
 Then, you can input the ID to retrieve the request time and response size for that particular request.
 <img src="https://i.gyazo.com/f087b5251da5558de191eee34f771750.png">
+<br>
 
 ## Goals for the Future
 
@@ -65,6 +69,8 @@ Then, you can input the ID to retrieve the request time and response size for th
 - Customize data structures for scalability and optimization.
 - Write integration tests.
 - Research a more thorough manner of unit testing servlet/filter interaction.
+
+<br>
 
 ##Feedback
 I hope you've been able to learn a little bit more about Spring and the possible usage of filters for creating
