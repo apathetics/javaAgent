@@ -65,14 +65,12 @@ Then, you can input the ID to retrieve the request time and response size for th
 
 ## Goals for the Future
 
-- See how to further decouple this from the web application by creating a Java instrumentation agent.
-- Customize data structures for scalability and optimization.
-- Write integration tests.
-- Research a more thorough manner of unit testing servlet/filter interaction.
+1. See how to further decouple this from the web application by creating a Java instrumentation agent.
+2. Customize data structures for scalability and optimization.
+3. Write integration tests.
+4. Research a more thorough manner of unit testing servlet/filter interaction.
 
-<br>
-
-##Feedback
+## Feedback
 I hope you've been able to learn a little bit more about Spring and the possible usage of filters for creating
 metric collection and logging.
 
