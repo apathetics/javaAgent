@@ -39,7 +39,7 @@
 
         <p>Please enter a response/request unique ID to view its metrics.</p>
         <form id="searchForm">
-            ID: <input type="text" name="uuid">
+            ID: <input type="text" name="uuid" width="25%">
             <input type="button" onclick ="metricGet()" value="Submit">
         </form>
 
