@@ -51,9 +51,9 @@
                 <th>Response Size (bytes)</th>
             </tr>
             <tr>
-                <th>${metrics.id}</th>
-                <th><fmt:formatNumber value="${metrics.requestTime}" maxFractionDigits="0"/></th>
-                <th><fmt:formatNumber value="${metrics.responseSize}" maxFractionDigits="0"/></th>
+                <th>${id}</th>
+                <th><fmt:formatNumber value="${requestTime}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${responseSize}" maxFractionDigits="0"/></th>
             </tr>
         </table>
         </div>

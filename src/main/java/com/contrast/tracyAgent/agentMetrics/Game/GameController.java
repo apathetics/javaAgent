@@ -8,17 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class GameController {
 
     @Autowired
     private GameService gameService;
 
-    @RequestMapping("/api/games")
+    @RequestMapping("/games")
     public List<Game> getAllGames() {
         return gameService.getAllGames();
     }
 
-    @RequestMapping("/api/games/{id}")
+    @RequestMapping("/games/{id}")
     public Game getGame(@PathVariable String id) {
         return gameService.getGame(id);
     }

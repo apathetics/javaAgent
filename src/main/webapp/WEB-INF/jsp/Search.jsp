@@ -35,7 +35,6 @@
 <div class="container">
     <div class="starter-template">
         <h1>Search</h1>
-
         <p>Please enter a response/request unique ID to view its metrics.</p>
         <form id="searchForm">
             ID: <input type="text" name="uuid">

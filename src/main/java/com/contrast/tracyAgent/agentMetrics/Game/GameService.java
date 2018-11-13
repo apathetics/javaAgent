@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class GameService {
 
-    List<Game> gamesList = Arrays.asList(
+    private List<Game> gamesList = Arrays.asList(
             new Game("DS3", "Dark Souls 3", "A brief exercise in the unforgiving nature of life."),
             new Game("CS", "Counter-Strike 1.6", "A nostalgic remembrance of the good old days."),
             new Game( "LOL", "League of Legends", "A never-ending time sink full of toxicity and friendships.")

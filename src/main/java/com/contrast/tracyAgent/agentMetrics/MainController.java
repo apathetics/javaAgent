@@ -1,5 +1,6 @@
 package com.contrast.tracyAgent.agentMetrics;
 
+import com.contrast.tracyAgent.agentMetrics.Metric.Metric;
 import com.contrast.tracyAgent.agentMetrics.Metric.MetricDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,26 +16,28 @@ public class MainController {
     @Autowired
     MetricDao metricDao;
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "Hello, World!";
-    }
-
     @RequestMapping("/")
     public String Home(Map<String, Object> model) {
-        model.put("metrics", metricDao);
+        model.put("minRequestTime", metricDao.getMinRequestTime());
+        model.put("minResponseSize", metricDao.getMinResponseSize());
+        model.put("maxRequestTime", metricDao.getMaxRequestTime());
+        model.put("maxResponseSize", metricDao.getMaxResponseSize());
+        model.put("averageRequestTime", metricDao.getAverageRequestTime());
+        model.put("averageResponseSize", metricDao.getAverageResponseSize());
         return "Home";
     }
 
     @RequestMapping("/search")
-    public String Search(Map<String, Object> model) {
-        model.put("metrics", metricDao.getMetricsMap());
+    public String Search() {
         return "Search";
     }
 
     @RequestMapping("/search/result/{id}")
     public String SearchResult(Map<String, Object> model, @PathVariable String id) {
-        model.put("metrics", metricDao.getMetricsMap().get(UUID.fromString(id)));
+        Metric selectedMetric = metricDao.getMetricsMap().get(UUID.fromString(id));
+        model.put("id", selectedMetric.getId());
+        model.put("requestTime", selectedMetric.getRequestTime());
+        model.put("responseSize", selectedMetric.getResponseSize());
         return "SearchResult";
     }
 }

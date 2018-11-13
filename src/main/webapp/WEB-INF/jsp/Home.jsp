@@ -47,12 +47,12 @@
                 <th>Average Response Size (bytes)</th>
             </tr>
             <tr>
-                <th><fmt:formatNumber value="${metrics.minRequestTime}" maxFractionDigits="0"/></th>
-                <th><fmt:formatNumber value="${metrics.minResponseSize}" maxFractionDigits="0"/></th>
-                <th><fmt:formatNumber value="${metrics.maxRequestTime}" maxFractionDigits="0"/></th>
-                <th><fmt:formatNumber value="${metrics.maxResponseSize}" maxFractionDigits="0"/></th>
-                <th><fmt:formatNumber value="${metrics.averageRequestTime}" maxFractionDigits="2"/></th>
-                <th><fmt:formatNumber value="${metrics.averageResponseSize}" maxFractionDigits="2"/></th>
+                <th><fmt:formatNumber value="${minRequestTime}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${minResponseSize}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${maxRequestTime}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${maxResponseSize}" maxFractionDigits="0"/></th>
+                <th><fmt:formatNumber value="${averageRequestTime}" maxFractionDigits="2"/></th>
+                <th><fmt:formatNumber value="${averageResponseSize}" maxFractionDigits="2"/></th>
             </tr>
         </table>
     </div>
