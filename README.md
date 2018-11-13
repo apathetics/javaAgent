@@ -24,10 +24,16 @@ from my own test web application. Any user interested in using the filter should
 RequestResponseFilter class, the sample Metric model, the in-memory "DAO", and the sample FilterConfig to quickly import
 and extend into their own Spring project.
 
-The extension currently collects the minimum, maximum, and average of:
+The extension currently collects:
 1. Request Time (milliseconds)
 2. Response Size (bytes)
 3. A unique ID for each request (UUID)
+
+Then, it calculates for all collected request times and response sizes:
+1. Minimum
+2. Maximum
+3. Average
+
 <br>
 
 ## How To Use
