@@ -43,6 +43,8 @@ $ mvn spring-boot:run
 
 ```
 
+If you are starting from an IDE, then you can run the AgentsMetricsApplication from the IDE instead.
+
 ## Examples of Usage
 The home screen where collected metrics are displayed in a table.
 <br>
@@ -57,4 +59,19 @@ For the search page, simply look in your logs for the unique id generated for th
 Then, you can input the ID to retrieve the request time and response size for that particular request.
 <img src="https://i.gyazo.com/f087b5251da5558de191eee34f771750.png">
 
-<br>
+## Goals for the Future
+
+- See how to further decouple this from the web application by creating a Java instrumentation agent.
+- Customize data structures for scalability and optimization.
+- Write integration tests.
+- Research a more thorough manner of unit testing servlet/filter interaction.
+
+##Feedback
+I hope you've been able to learn a little bit more about Spring and the possible usage of filters for creating
+metric collection and logging.
+
+I am always happy to receive feedback and suggestions on how to improve as an engineer, so please don't hesitate to
+send me an email or leave an issue.
+
+Thank you for stopping by!
+

@@ -26,6 +26,9 @@ public class FilterTest {
     @Autowired
     RequestResponseFilter filter = new RequestResponseFilter();
 
+    // This filter is currently difficult to completely verify the return data because
+    // all of Metric logic is handled into the MetricDao (tested for in the MetricDao unit test).
+    // So, I am focusing on the request/responses being handled correctly by the filter here instead of the metrics.
     @Test
     public void testFilter() throws ServletException, IOException {
 

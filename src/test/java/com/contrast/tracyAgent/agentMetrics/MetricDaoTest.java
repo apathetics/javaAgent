@@ -21,6 +21,7 @@ public class MetricDaoTest {
     @Autowired
     private MetricDao metricDao;
 
+    // Validation of the calculations for min/max/averages and any Metric logic here.
     @Test
     public void givenMetrics_whenAddMetrics_thenCalculateMetrics() {
         Metric metric1 = new Metric(UUID.randomUUID(), 1000, 5000);

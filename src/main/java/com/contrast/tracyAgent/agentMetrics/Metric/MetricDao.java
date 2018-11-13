@@ -7,9 +7,13 @@ import java.util.Comparator;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+// If we were using an actual database, then separate this into its respective service and DAO layers.
+
 @Component
 public class MetricDao {
 
+    // I remember discussing the usage of WeakHashMap with Dan for dealing with scalability.
+    // Possible optimization by implementing a LRU cache too.
     private ConcurrentHashMap<UUID, Metric> metricMemoryMap = new ConcurrentHashMap<>();
 
     private double minRequestTime;

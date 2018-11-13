@@ -30,7 +30,7 @@ public class RequestResponseFilter implements Filter {
     private MetricDao metricDao;
 
     @Override
-    public void init(final FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) {
         log.info("Initializing filter: {}", this);
     }
 
@@ -42,6 +42,9 @@ public class RequestResponseFilter implements Filter {
         UUID newRequestId = UUID.randomUUID();
 
         log.info("Logging request {}: {} at {}", newRequestId, req.getMethod(), req.getRequestURI());
+
+        // Possibly look into using nanoseconds instead of millis if precision is very important.
+        // nanoTime() is extremely expensive compared to currentTimeMillis()
         long requestTime = System.currentTimeMillis();
 
         // In case content-length is not set (for example - chunked encoding),
@@ -53,6 +56,8 @@ public class RequestResponseFilter implements Filter {
         long responseTime = System.currentTimeMillis();
         responseWrapper.copyBodyToResponse();
 
+        // Because we are looking at all responses, there could be the possibility of a null response.
+        // Perhaps write an exception around this.
         if(responseWrapper.getHeader("Content-Length") == null) {
             return;
         }
